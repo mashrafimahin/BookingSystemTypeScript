@@ -32,7 +32,7 @@ const Form: FC = () => {
     city: "",
     region: "",
     post: "",
-    country: "",
+    country: "Bangladesh",
     email: "",
     phone: 0,
     adults: 0,
@@ -40,25 +40,8 @@ const Form: FC = () => {
   });
 
   // handle click
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // example validation
-    if (
-      !formData.firstName &&
-      !formData.lastName &&
-      !formData.addressOne &&
-      !formData.addressTwo &&
-      !formData.city &&
-      !formData.country &&
-      !formData.email &&
-      !formData.phone &&
-      !formData.adults &&
-      !formData.kids
-    ) {
-      alert("Please fill required fields");
-      return;
-    }
-    // submit logic
     console.log("Form submitted:", formData);
   };
 
@@ -69,7 +52,7 @@ const Form: FC = () => {
         Reserve a Room
       </h1>
       {/* form */}
-      <form className="commonPartition gap-3">
+      <form className="commonPartition gap-3" onSubmit={handleSubmit}>
         {/* name part */}
         <div className="commonPartition">
           <label className="commonLabel">
@@ -81,12 +64,14 @@ const Form: FC = () => {
               name={"firstName"}
               placeholder={"First Name"}
               setData={setFormData}
+              required={true}
             />
             <Input
               type={"text"}
               name={"lastName"}
               placeholder={"Last Name"}
               setData={setFormData}
+              required={true}
             />
           </div>
         </div>
@@ -114,18 +99,21 @@ const Form: FC = () => {
               name={"city"}
               placeholder={"City"}
               setData={setFormData}
+              required={true}
             />
             <Input
               type={"text"}
               name={"region"}
               placeholder={"Region"}
               setData={setFormData}
+              required={true}
             />
             <Input
               type={"text"}
               name={"post"}
               placeholder={"Postal/Zip Code"}
               setData={setFormData}
+              required={true}
             />
             <Selection
               options={countries}
@@ -150,6 +138,7 @@ const Form: FC = () => {
                 name={"email"}
                 placeholder={"john.doe@example.com"}
                 setData={setFormData}
+                required={true}
               />
             </div>
             {/* info two */}
@@ -162,6 +151,7 @@ const Form: FC = () => {
                 name={"phone"}
                 placeholder={"+123 456 789"}
                 setData={setFormData}
+                required={true}
               />
             </div>
           </div>
@@ -180,6 +170,7 @@ const Form: FC = () => {
                 name={"adults"}
                 placeholder={""}
                 setData={setFormData}
+                required={true}
               />
             </div>
             {/* info two */}
@@ -195,7 +186,7 @@ const Form: FC = () => {
           </div>
         </div>
         {/* submit */}
-        <Button onClick={handleClick}>Room Reservation</Button>
+        <Button>Room Reservation</Button>
       </form>
     </div>
   );

@@ -6,7 +6,7 @@ import Form from "./component/Form";
 function App() {
   return (
     <div
-      className="px-4 md:px-20 py-6 w-full flex bg-cover bg-center bg-gray-300 bg-blend-multiply"
+      className="px-4 md:px-20 py-6 w-full min-h-screen flex 2xl:items-center 2xl:justify-center bg-cover bg-center bg-gray-300 bg-blend-multiply"
       style={{ backgroundImage: `url(${bg})` }}
     >
       <Form />

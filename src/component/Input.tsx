@@ -12,13 +12,21 @@ interface InputItems {
   name: keyof FormStyle;
   placeholder: string;
   setData: React.Dispatch<React.SetStateAction<FormStyle>>;
+  required?: boolean;
 }
 
 // main
-const Input: FC<InputItems> = ({ type, name, placeholder, setData }) => {
+const Input: FC<InputItems> = ({
+  type,
+  name,
+  placeholder,
+  setData,
+  required = false,
+}) => {
   // change state
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+    const value =
+      type === "number" ? parseFloat(e.target.value) : e.target.value;
     setData((prevState) => ({
       ...prevState,
       [name]: value,
@@ -31,6 +39,7 @@ const Input: FC<InputItems> = ({ type, name, placeholder, setData }) => {
       name={name}
       placeholder={placeholder}
       onChange={handleChange}
+      required={required}
       className="w-full px-4 py-2 rounded-md text-sm text-gray-950 tracking-wide outline-0 border border-gray-300 placeholder:text-gray-500"
     />
   );

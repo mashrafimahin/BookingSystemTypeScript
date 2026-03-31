@@ -1,1 +1,13 @@
 @import "tailwindcss";
+/* external design */
+@layer components {
+  .commonLabel {
+    @apply font-sans text-sm;
+  }
+  .commonSup {
+    @apply text-red-700;
+  }
+  .commonPartition {
+    @apply flex flex-col gap-2 w-full;
+  }
+}
